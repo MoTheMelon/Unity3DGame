@@ -1,22 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class NumEditor : MonoBehaviour
 {
-    public static GameObject incButton;
-    public static GameObject decButton;
+    public ButtonBehavior increaseButton;
+    public ButtonBehavior decreaseButton;
+    public TextMeshProUGUI numberText;
 
-    private ButtonBehavior incB = incButton.GetComponent<ButtonBehavior>();
-    private ButtonBehavior decB = decButton.GetComponent<ButtonBehavior>();
-    
-    void Start()
-    {
-        
-    }
+    private int currentValue = 0;
+
+    private bool increaseHandled = false;
+    private bool decreaseHandled = false;
 
     void Update()
     {
-        Debug.Log(incB.pressed);
+        if (increaseButton != null && decreaseButton != null)
+        {
+            // Increase logic
+            if (increaseButton.pressed && !increaseHandled)
+            {
+                currentValue++;
+                UpdateText();
+                increaseHandled = true;
+            }
+            else if (!increaseButton.pressed)
+            {
+                increaseHandled = false;
+            }
+
+            // Decrease logic
+            if (decreaseButton.pressed && !decreaseHandled)
+            {
+                currentValue--;
+                UpdateText();
+                decreaseHandled = true;
+            }
+            else if (!decreaseButton.pressed)
+            {
+                decreaseHandled = false;
+            }
+        }
+    }
+
+    void UpdateText()
+    {
+        numberText.text = currentValue.ToString();
     }
 }
