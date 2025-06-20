@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     private GameObject currentHint;
     private GameObject currentTarget;
 
+    //button handling
+    private GameObject selectedButton;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -160,14 +163,7 @@ public class Player : MonoBehaviour
         {
             GameObject target = pick.collider.gameObject;
 
-            
-
-            if (target.CompareTag("PickUp"))
-            {
-                //Debug.Log("Looking at a pickup object: " + target.name);
-                Transform child = target.transform.Find("outline");
-
-                if (currentTarget == null)
+            if (currentTarget == null)
                 {
                     currentTarget = target;
                 }
@@ -180,14 +176,18 @@ public class Player : MonoBehaviour
                     {
                         currentTarget.transform.Find("outline").gameObject.SetActive(false);
                     }
-                    currentTarget = target;
+                    
 
                 }
-                else
-                {
-                    //should be same as what we're looking at now
-                    currentTarget = target;
-                }
+            
+                currentTarget = target;
+
+            if (target.CompareTag("Interactable"))
+            {
+                //Debug.Log("Looking at a pickup object: " + target.name);
+                Transform child = target.transform.Find("outline");
+
+                
 
                 if (child != null)
                 {
@@ -197,7 +197,12 @@ public class Player : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0)) // LMB click
                 {
-                    Debug.Log("Picked up: " + target.name);
+                    if (target.name == "Button")
+                    {
+                        Debug.Log("button pressed.");
+                        selectedButton = target;
+                    }
+                    
                     // TODO: Call your pickup logic here
                 }
             }

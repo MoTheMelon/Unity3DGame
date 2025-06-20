@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Free Cam
   - PickUp
+  - Interactable
+  - Button
   layers:
   - Default
   - TransparentFX
