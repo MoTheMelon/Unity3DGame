@@ -544,6 +544,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1139534199}
     m_Modifications:
+    - target: {fileID: 4607010587661419983, guid: 8f91d4bab3b63465595b004ebfa792ff, type: 3}
+      propertyPath: buttonDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5056529761482362267, guid: 8f91d4bab3b63465595b004ebfa792ff, type: 3}
       propertyPath: m_Name
       value: ButtonStand (1)
@@ -1526,6 +1530,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1139534199}
     m_Modifications:
+    - target: {fileID: 4607010587661419983, guid: 8f91d4bab3b63465595b004ebfa792ff, type: 3}
+      propertyPath: buttonDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5056529761482362267, guid: 8f91d4bab3b63465595b004ebfa792ff, type: 3}
       propertyPath: m_Name
       value: ButtonStand

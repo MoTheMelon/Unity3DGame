@@ -170,7 +170,6 @@ public class Player : MonoBehaviour
 
                 if (currentTarget != target)
                 {
-                    Debug.Log("current " + currentTarget.name + " target " + target.name);
                     //new target is diff from old without looking away
                     if (currentTarget.transform.Find("outline") != null)
                     {
@@ -184,7 +183,6 @@ public class Player : MonoBehaviour
 
             if (target.CompareTag("Interactable"))
             {
-                //Debug.Log("Looking at a pickup object: " + target.name);
                 Transform child = target.transform.Find("outline");
 
                 
@@ -199,11 +197,14 @@ public class Player : MonoBehaviour
                 {
                     if (target.name == "Button")
                     {
-                        Debug.Log("button pressed.");
+                        ButtonBehavior button = target.GetComponent<ButtonBehavior>();
+                        if (button != null)
+                        {
+                            button.Press(); // Trigger the button's press
+                        }
                         selectedButton = target;
                     }
                     
-                    // TODO: Call your pickup logic here
                 }
             }
         }
